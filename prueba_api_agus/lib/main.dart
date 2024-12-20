@@ -184,6 +184,8 @@ class SuBurbuja extends StatelessWidget {
 }
 
 class CallScreen extends StatelessWidget {
+  const CallScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).colorScheme;
