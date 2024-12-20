@@ -5,7 +5,11 @@ import 'package:prueba_api_agus/domain/entities/usuario.dart';
 
 class UsuarioDatasourceImpl implements UsuarioDatasource {
 
-  final dio = Dio();
+  final dio = Dio(
+    BaseOptions(
+      baseUrl: 'http://localhost:8000/api',
+    )
+  );
 
   @override
   Future<Usuario?> getUsuario(int id) async {
@@ -16,7 +20,7 @@ class UsuarioDatasourceImpl implements UsuarioDatasource {
   Future<List<Usuario>> getUsuarios() async {
     try {
       
-      final response = await dio.get( 'http://localhost:8000/api/usuario' );
+      final response = await dio.get( '/usuario' );
       print( response.data );
 
       return [];

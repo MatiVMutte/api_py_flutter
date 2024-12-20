@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prueba_api_agus/presentation/providers/usuario_provider.dart';
 
 // MAINNN
 void main() => runApp(ProviderScope(
@@ -23,85 +24,106 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends ConsumerWidget {
   const HomeScreen({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context).colorScheme;
+    final usuarios = ref.watch( obtenerUsuariosProvider.notifier ).obtenerUsuarios();
 
     return Scaffold(
+
+
       appBar: AppBar(
-        elevation: 10,
-        leading: IconButton(
-          onPressed: (){},
-          icon: Icon(Icons.arrow_back_ios_sharp)
-        ),
-        title: InkWell(
-          borderRadius: BorderRadius.circular(50),
-          onTap: (){},
-          child: Row(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(50),
-                child: Image.network(
-                  "https://wallpapersmug.com/download/1920x1080/3be6a3/lionel-messi-celebrity-player.jpg",
-                  fit: BoxFit.cover,
-                  width: 50,
-                  height: 50,
-                ),
-              ),
-              SizedBox(width: 10),
-              Text("Mariano"),
-            ],
-          ),
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => CallScreen()),
-              );
-            },
-            icon: const Icon(Icons.call),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.video_call),
-          ),
-        ],
+        title: Text("Prueba API Agus"),
+        centerTitle: true,
       ),
-      body: SafeArea(
+
+
+      body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Expanded(
-              child: ListView.builder(
-                physics: BouncingScrollPhysics(),
-                reverse: true,
-                itemCount: 20,
-                itemBuilder: (context, index) {
-                  if (index % 2 == 0) {
-                    return Align(
-                      alignment: Alignment.centerRight,
-                      child: MiBurbuja(theme: theme),
-                    );
-                  } else {
-                    return Align(
-                      alignment: Alignment.centerLeft,
-                      child: SuBurbuja(theme: theme),
-                    );
-                  }
-                },
-              ),
-            ),
-            _buildMessageInput(theme),
+            Text("asd"),
           ],
         ),
       ),
+
+
     );
+    // return Scaffold(
+    //   appBar: AppBar(
+    //     elevation: 10,
+    //     leading: IconButton(
+    //       onPressed: (){},
+    //       icon: Icon(Icons.arrow_back_ios_sharp)
+    //     ),
+    //     title: InkWell(
+    //       borderRadius: BorderRadius.circular(50),
+    //       onTap: (){},
+    //       child: Row(
+    //         children: [
+    //           ClipRRect(
+    //             borderRadius: BorderRadius.circular(50),
+    //             child: Image.network(
+    //               "https://wallpapersmug.com/download/1920x1080/3be6a3/lionel-messi-celebrity-player.jpg",
+    //               fit: BoxFit.cover,
+    //               width: 50,
+    //               height: 50,
+    //             ),
+    //           ),
+    //           SizedBox(width: 10),
+    //           Text("Mariano"),
+    //         ],
+    //       ),
+    //     ),
+    //     actions: [
+    //       IconButton(
+    //         onPressed: () {
+    //           Navigator.push(
+    //             context,
+    //             MaterialPageRoute(builder: (context) => CallScreen()),
+    //           );
+    //         },
+    //         icon: const Icon(Icons.call),
+    //       ),
+    //       IconButton(
+    //         onPressed: () {},
+    //         icon: const Icon(Icons.video_call),
+    //       ),
+    //     ],
+    //   ),
+    //   body: SafeArea(
+    //     child: Column(
+    //       children: [
+    //         Expanded(
+    //           child: ListView.builder(
+    //             physics: BouncingScrollPhysics(),
+    //             reverse: true,
+    //             itemCount: 20,
+    //             itemBuilder: (context, index) {
+    //               if (index % 2 == 0) {
+    //                 return Align(
+    //                   alignment: Alignment.centerRight,
+    //                   child: MiBurbuja(theme: theme),
+    //                 );
+    //               } else {
+    //                 return Align(
+    //                   alignment: Alignment.centerLeft,
+    //                   child: SuBurbuja(theme: theme),
+    //                 );
+    //               }
+    //             },
+    //           ),
+    //         ),
+    //         _buildMessageInput(theme),
+    //       ],
+    //     ),
+    //   ),
+    // );
   }
 
   Widget _buildMessageInput(ColorScheme theme) {

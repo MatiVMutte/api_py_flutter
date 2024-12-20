@@ -24,9 +24,9 @@ class UsuariosNotifier extends StateNotifier< List<Usuario> > {
     required this.fObtenerUsuarios,
   }) : super( [] );
 
-  Future<void> obtenerUsuarios() async {
+  Future<List<Usuario>> obtenerUsuarios() async {
 
-    state = await fObtenerUsuarios();
+    return state = await fObtenerUsuarios();
 
   }
 
