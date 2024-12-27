@@ -33,6 +33,7 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // final theme = Theme.of(context).colorScheme;
     final usuarios = ref.watch( obtenerUsuariosProvider.notifier ).obtenerUsuarios();
+    print(usuarios);
 
     return Scaffold(
 

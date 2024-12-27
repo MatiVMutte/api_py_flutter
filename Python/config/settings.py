@@ -38,11 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders', 
     'rest_framework', # Importo la libreria de REST Framework
     'apps.usuario', # Importo mi API Usuario
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -50,6 +52,16 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+CORS_ALLOWED_ORIGINS = [ 
+    "http://localhost:8000",
+    "http://10.0.2.2:8000", # Para emulador de Android 
+]
+
+ALLOWED_HOSTS = [
+    "10.0.2.2",
+    "localhost",
 ]
 
 ROOT_URLCONF = 'config.urls'
