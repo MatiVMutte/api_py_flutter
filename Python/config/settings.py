@@ -62,6 +62,7 @@ CORS_ALLOWED_ORIGINS = [
 ALLOWED_HOSTS = [
     "10.0.2.2",
     "localhost",
+    "127.0.0.1"
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -90,8 +91,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'HOST': 'aws-0-sa-east-1.pooler.supabase.com',
+        'NAME': 'postgres',
+        'USER': 'postgres.vshhwopmmdmdkbeznjni',
+        'PASSWORD': 'ZPkbCJ7QjcBX7cVK',
+        'PORT': '6543',
     }
 }
 
