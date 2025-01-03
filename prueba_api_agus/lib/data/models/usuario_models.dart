@@ -1,26 +1,26 @@
 class UsuarioModels {
-    final int id;
-    final String nome;
+    final int? id;
+    final String name;
     final String email;
     final String password;
 
     UsuarioModels({
-        required this.id,
-        required this.nome,
+        this.id,
+        required this.name,
         required this.email,
         required this.password,
     });
 
     factory UsuarioModels.fromJson(Map<String, dynamic> json) => UsuarioModels(
         id: json["id"],
-        nome: json["nome"],
+        name: json["name"],
         email: json["email"],
         password: json["password"],
     );
 
     Map<String, dynamic> toJson() => {
-        "id": id,
-        "nome": nome,
+        // "id": id,
+        "name": name,
         "email": email,
         "password": password,
     };

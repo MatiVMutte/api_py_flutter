@@ -6,4 +6,13 @@ abstract class UsuarioDatasource {
 
   Future<List<Usuario>> getUsuarios();
 
+  Future<void> addUsuario( Usuario usuario );
+
+  Future<bool> deleteUsuario( int id );
+
+  Future<bool> updateUsuario( Usuario usuario );
+
+  // TODO: SignIn, SignUp, SignOut
+  
+
 }

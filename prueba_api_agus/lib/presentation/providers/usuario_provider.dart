@@ -1,12 +1,13 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:prueba_api_agus/data/repositories/usuario_repository_impl.dart';
 import 'package:prueba_api_agus/domain/entities/usuario.dart';
 import 'package:prueba_api_agus/presentation/providers/usuario_repository_provider.dart';
 
 final obtenerUsuariosProvider = StateNotifierProvider< UsuariosNotifier, List<Usuario> >( (ref) {
   
-  final obtenerUsuarios = ref.watch( usuarioRepositoryProvider ).getUsuarios;
+  final proveedor = ref.watch( usuarioRepositoryProvider );
 
-  return UsuariosNotifier(fObtenerUsuarios: obtenerUsuarios);
+  return UsuariosNotifier(proveedor: proveedor);
 
 },);
 
@@ -14,19 +15,29 @@ final obtenerUsuariosProvider = StateNotifierProvider< UsuariosNotifier, List<Us
 
 
 
-typedef ObtenerUsuarios = Future<List<Usuario>> Function();
-
 class UsuariosNotifier extends StateNotifier< List<Usuario> > {
 
-  ObtenerUsuarios fObtenerUsuarios;
+  UsuarioRepositoryImpl proveedor;
 
   UsuariosNotifier({
-    required this.fObtenerUsuarios,
+    required this.proveedor,
   }) : super( [] );
 
   Future<List<Usuario>> obtenerUsuarios() async {
 
-    return state = await fObtenerUsuarios();
+    return state = await proveedor.getUsuarios();
+
+  }
+
+  Future<void> agregarUsuario(Usuario usuario) async {
+
+    proveedor.addUsuario(usuario);
+
+  }
+
+  Future<void> eliminarUsuario(int id) async {
+
+    proveedor.deleteUsuario(id);
 
   }
 

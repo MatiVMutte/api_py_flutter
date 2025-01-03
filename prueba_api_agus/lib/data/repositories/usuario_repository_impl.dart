@@ -17,5 +17,22 @@ class UsuarioRepositoryImpl extends UsuarioRepository {
   Future<List<Usuario>> getUsuarios() async {
     return _usuarioDatasourceImpl.getUsuarios();
   }
+  
+  @override
+  Future<void> addUsuario(Usuario usuario) async {
+    return _usuarioDatasourceImpl.addUsuario(usuario);
+  }
+  
+  @override
+  Future<bool> deleteUsuario(int id) async {
+    return _usuarioDatasourceImpl.deleteUsuario(id);
+  }
+  
+  @override
+  Future<bool> updateUsuario(Usuario usuario) async {
+    return _usuarioDatasourceImpl.updateUsuario(usuario);
+  }
+
+  
 
 }

@@ -1,19 +1,13 @@
 class Usuario {
+  final int? id;
   final String nombre;
   final String mail;
   final String contrasenia;
 
   Usuario({
+    this.id,
     required this.nombre,
     required this.mail,
     required this.contrasenia,
   });
-
-  factory Usuario.fromJson(Map<String, dynamic> json) {
-    return Usuario(      
-      nombre: json['nombre'],
-      mail: json['mail'],
-      contrasenia: json['contrasenia'],
-    );
-  }
 }
